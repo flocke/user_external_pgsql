@@ -28,11 +28,12 @@ class OC_User_PgSQL extends \OCA\user_external\Base {
     /**
      * Create new PostgreSQL authentication provider
      *
-     * @param string  $host       Hostname or IP of PostgreSQL server
-     * @param string  $username   Username for the PostgreSQL server
-     * @param string  $password   Password for the PostgreSQL server
-     * @param string  $dbname     Database with the user information
-     * @param string  $pwquery    Query used to fetch the password (%u is replaced by the uid)
+     * @param string  $host              Hostname or IP of PostgreSQL server
+     * @param string  $username          Username for the PostgreSQL server
+     * @param string  $password          Password for the PostgreSQL server
+     * @param string  $dbname            Database with the user information
+     * @param string  $pwquery           Query used to fetch the password (%u is replaced by the uid)
+     * @param string  $displaynamequery  Query used to fetch the display name (%u is replaced by the uid)
      */
     public function __construct($host, $username, $password, $dbname, $pwquery, $displaynamequery = null) {
         parent::__construct($host, $username, $password, $dbname, $pwquery);
@@ -44,6 +45,16 @@ class OC_User_PgSQL extends \OCA\user_external\Base {
         $this->displaynamequery = $displaynamequery;
     }
 
+    /**
+     *
+     * Helper function to easily perform a PostgreSQL query and get the result.
+     *
+     * @param resource  $dbconn   Database connection created with pg_connect
+     * @param string    $query    PostgreSQL query to perform
+     * @param int       $row      Row to fetch the result from
+     * @param int       $col      Column to fetch the result from
+     *
+     */
     private function simple_pgsql_query($dbconn, $query, $row = 0, $col = 0) {
         if ( ! $result = pg_query($dbconn, $query) ) {
             OCP\Util::writeLog('user_external_pgsql', sprintf("PostgreSQL query '%s' failed", $query), OCP\Util::ERROR);
