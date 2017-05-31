@@ -1,6 +1,6 @@
-# Nextcloud Mail
+# External PostgreSQL authentication for [Nextcloud](https://nextcloud.com)
 
-**External PostgreSQL authentication for [Nextcloud](https://nextcloud.com)**
+This is an extension for the [user_external](https://docs.nextcloud.com/server/12/admin_manual/configuration_user/user_auth_ftp_smb_imap.html) app for Nextcloud that adds authentication against an external PostgreSQL database.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Just download/clone this GitHub repository into the apps folder of you Nextcloud
 
 ## Configuration
 
-For this app to work the [user_external](https://github.com/nextcloud/apps/tree/master/user_external) app (included in Nextcloud) has to be enabled as well.
+For this app to work the **user_external** app (included in Nextcloud) has to be enabled as well.
 This can be done by using the internal Apps menu in your Nextcloud installation or with the [`occ` command](https://docs.nextcloud.com/server/12/admin_manual/configuration_server/occ_command.html):
 
 ```bash
