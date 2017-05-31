@@ -73,7 +73,7 @@ class OC_User_PgSQL extends \OCA\user_external\Base {
      */
     public function checkPassword($uid, $password) {
         if ( ! $dbconn = pg_connect("host=" . $this->host . " user=" . $this->username . " password=" . $this->password . " dbname=" . $this->dbname) ) {
-            OCP\Util::writeLog( 'user_external_pgsql', 'ERROR: Could not connect to the PostgreSQL database', OCP\Util::ERROR);
+            OCP\Util::writeLog( 'user_external_pgsql', 'Could not connect to the PostgreSQL database', OCP\Util::ERROR);
             return false;
         };
 
