@@ -50,8 +50,12 @@ class OC_User_PgSQL extends \OCA\user_external\Base {
             return null;
         }
 
-        if ( ! $value = pg_fetch_result($result, $row, $col) ) {
-          OCP\Util::writeLog('user_external_pgsql', sprintf("Unable to fetch result (row = %d, col = %d) of PostgreSQL query '%s'", $row, $col, $query), OCP\Util::ERROR);
+        if ( pg_num_rows($result) > 0 ) {
+          if (! $value = pg_fetch_result($result, $row, $col)) {
+            OCP\Util::writeLog('user_external_pgsql', sprintf("Unable to fetch result (row = %d, col = %d) of PostgreSQL query '%s'", $row, $col, $query), OCP\Util::ERROR);
+            $value = null;
+          }
+        } else {
           $value = null;
         }
 
