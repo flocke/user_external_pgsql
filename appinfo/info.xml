@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<info>
+  <id>user_external_pgsql</id>
+  <name>PostgreSQL authentication</name>
+  <description>Use an external PostgreSQL database for authentication</description>
+  <licence>AGPL</licence>
+  <author>Jakob Nixdorf</author>
+  <website>https://github.com/flocke/user_external_pgsql</website>
+  <bugs>https://github.com/flocke/user_external_pgsql/issues</bugs>
+  <dependencies>
+    <nextcloud min-version="12" max-version="12" />
+  </dependencies>
+  <version>0.1</version>
+  <types>
+    <authentication/>
+    <prelogin/>
+  </types>
+</info>
