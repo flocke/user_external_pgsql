@@ -104,7 +104,7 @@ class OC_User_PgSQL extends \OCA\user_external\Base {
 
         pg_close($dbconn);
 
-        if( crypt($password, $fetched_pw) == $fetched_pw ) {
+        if( password_verify($password, $fetched_pw) ) {
             $this->storeUser($uid);
 
             if ($new_user and ! is_null($displayname)) {
